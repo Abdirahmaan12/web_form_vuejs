@@ -1,26 +1,18 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <signupform v-if="!showSuccess" @form-success="showSuccess = true" />
+  <success v-else @reset="showSuccess = false" />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import signupform from './components/signupform.vue'
+import success from './components/success.vue'
 export default {
   name: 'App',
-  components: {
-    HelloWorld
-  }
+  data() {
+    return {
+      showSuccess: false
+    }
+  },
+  components: { signupform, success }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
